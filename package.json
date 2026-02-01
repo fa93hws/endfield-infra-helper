@@ -4,9 +4,9 @@
   "description": "Responsive React application with TypeScript and Material-UI",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "dev": "vite --config config/vite/vite.config.ts",
+    "build": "tsc && vite build --config config/vite/vite.config.ts",
+    "preview": "vite preview --config config/vite/vite.config.ts"
   },
   "keywords": [],
   "author": "",
