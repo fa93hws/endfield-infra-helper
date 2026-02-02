@@ -23,8 +23,8 @@ export default function Page() {
           <Link href="/receipts" variant="h6" underline="hover">
             查看配方 →
           </Link>
-          <Link href="#" variant="h6" underline="hover" color="text.secondary">
-            量化计算器 (WIP)
+          <Link href="/calculator" variant="h6" underline="hover">
+            量化计算器 →
           </Link>
         </Stack>
 
