@@ -1,7 +1,7 @@
 export const naturalItems = {
   originiumOre: '源石原矿',
   amethystOre: '紫水晶矿',
-  ferriumOre: '铁矿石',
+  ferriumOre: '蓝铁矿',
   cleanWater: '纯净水',
   buckflower: '荞花',
   buckflowerSeed: '荞花种子',
