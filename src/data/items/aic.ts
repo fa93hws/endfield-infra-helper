@@ -46,7 +46,7 @@ export const aicProducts = {
   amethystComponent: '紫晶装备原件',
   ferriumComponent: '蓝铁装备原件',
   crystonComponent: '高晶装备原件',
-  cupriumComponent: '铜制组件',
+  // cupriumComponent: '铜制组件',
 };
 
 export type AicProductKey = keyof typeof aicProducts;

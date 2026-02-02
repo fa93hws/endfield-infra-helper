@@ -6,7 +6,7 @@ export const naturalItems = {
   buckflower: '荞花',
   buckflowerSeed: '荞花种子',
   firebuckle: '映火荞花',
-  firebuckleSeed: '映火荞花种子',
+  // firebuckleSeed: '映火荞花种子',
   sandleaf: '砂叶',
   sandleafSeed: '砂叶种子',
 };
