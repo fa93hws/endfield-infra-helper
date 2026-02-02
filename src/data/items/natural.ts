@@ -6,11 +6,16 @@ export const ores = {
 
 export const plants = {
   buckflower: '荞花',
-  buckflowerSeed: '荞花种子',
   firebuckle: '映火荞花',
   sandleaf: '砂叶',
-  sandleafSeed: '砂叶种子',
   citrome: '柑实',
+  jincao: '锦草',
+  yazhen: '芽针',
+};
+
+export const plantSeeds = {
+  buckflowerSeed: '荞花种子',
+  sandleafSeed: '砂叶种子',
   citromeSeed: '柑实种子',
 };
 
@@ -26,5 +31,6 @@ export const naturalItems = {
 
 export type OreKey = keyof typeof ores;
 export type PlantKey = keyof typeof plants;
+export type PlantSeedKey = keyof typeof plantSeeds;
 export type OtherNaturalItemKey = keyof typeof otherNaturalItems;
 export type NaturalItemKey = keyof typeof naturalItems;

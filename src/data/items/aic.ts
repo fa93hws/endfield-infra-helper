@@ -8,6 +8,7 @@ export const oreRefined = {
   packedOrigocrust: '密制晶体',
   crystonFiber: '高晶纤维',
   steel: '钢块',
+  xiranite: '息壤',
 };
 
 export const orePowder = {

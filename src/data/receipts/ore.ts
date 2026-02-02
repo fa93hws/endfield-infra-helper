@@ -2,12 +2,28 @@ import { Receipt } from './type';
 
 const carbonReceipts: Receipt[] = [
   {
-    inputs: [{ item: 'carbon', perMin: 30 }],
-    outputs: [{ item: 'carbonPowder', perMin: 30 }],
+    inputs: [{ item: 'sandleaf', perMin: 30 }],
+    outputs: [{ item: 'carbon', perMin: 30 }],
   },
   {
+    inputs: [{ item: 'buckflower', perMin: 30 }],
     outputs: [{ item: 'carbon', perMin: 30 }],
-    inputs: [{ item: 'sandleaf', perMin: 30 }],
+  },
+  {
+    inputs: [{ item: 'citrome', perMin: 30 }],
+    outputs: [{ item: 'carbon', perMin: 30 }],
+  },
+  {
+    inputs: [{ item: 'jincao', perMin: 30 }],
+    outputs: [{ item: 'carbon', perMin: 60 }],
+  },
+  {
+    inputs: [{ item: 'yazhen', perMin: 30 }],
+    outputs: [{ item: 'carbon', perMin: 60 }],
+  },
+  {
+    inputs: [{ item: 'carbon', perMin: 30 }],
+    outputs: [{ item: 'carbonPowder', perMin: 30 }],
   },
   {
     inputs: [
@@ -139,6 +155,16 @@ const ferriumReceipts: Receipt[] = [
   },
 ];
 
+const xiraniteReceipts: Receipt[] = [
+  {
+    inputs: [
+      { item: 'stabilizedCarbon', perMin: 60 },
+      { item: 'cleanWater', perMin: 30 },
+    ],
+    outputs: [{ item: 'xiranite', perMin: 30 }],
+  },
+];
+
 export const bottleReceipts: Receipt[] = [
   {
     inputs: [{ item: 'amethystFiber', perMin: 60 }],
@@ -158,5 +184,6 @@ export const oreReceipts = [
   ...carbonReceipts,
   ...originiumReceipts,
   ...amethystReceipts,
+  ...xiraniteReceipts,
   ...ferriumReceipts,
 ];
