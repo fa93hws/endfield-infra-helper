@@ -2,7 +2,7 @@ export function Head() {
   const title = '终末地基建助手';
   const description =
     '终末地（Endfield）基础设施生产配方查询和计算工具，帮助你查看和管理矿石、植物、药品、电池和装备组件的生产配方。';
-  const url = 'https://endfield-infra-helper.example.com';
+  const url = 'https://endfield-industry-helper.pages.dev';
   const imageUrl = `${url}/og-image.png`;
 
   return (

@@ -23,7 +23,7 @@ export function Head() {
             '@type': 'CalculateAction',
             target: {
               '@type': 'EntryPoint',
-              urlTemplate: 'https://endfield-infra-helper.example.com/calculator',
+              urlTemplate: 'https://endfield-industry-helper.pages.dev/calculator',
             },
           },
         })}

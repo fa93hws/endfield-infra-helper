@@ -1,6 +1,6 @@
 # 终末地基础设施助手
 
-https://endfield-infra-helper.pages.dev/
+https://endfield-industry-helper.pages.dev/
 
 一个帮助你查看和管理终末地（Endfield）游戏中各种生产配方的响应式 Web 应用。
 
