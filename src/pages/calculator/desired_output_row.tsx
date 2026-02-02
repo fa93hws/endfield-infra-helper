@@ -20,7 +20,7 @@ export function DesiredOutputRow({
   onRemove,
 }: DesiredOutputRowProps) {
   return (
-    <Stack direction="row" spacing={2} alignItems="center">
+    <Stack direction="row" spacing={2} alignItems="center" sx={{ maxWidth: 350 }}>
       <Box sx={{ flex: '0 0 55%' }}>
         <ItemSelector value={item} onChange={onItemChange} />
       </Box>
