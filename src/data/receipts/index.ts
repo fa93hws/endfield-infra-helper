@@ -10,6 +10,7 @@ export const allReceipts = [
   ...medicineReceipts,
   ...batteryReceipts,
   ...bottleReceipts,
+  ...components,
 ];
 
 export interface ReceiptSection {

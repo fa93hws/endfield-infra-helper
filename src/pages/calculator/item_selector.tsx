@@ -21,17 +21,20 @@ export default function ItemSelector({ value, onChange, label, placeholder }: It
       onChange={(_, newValue) => onChange(newValue?.key ?? null)}
       options={items}
       getOptionLabel={(option) => option.name}
-      renderOption={(props, option) => (
-        <Box component="li" {...props} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Avatar
-            src={images[option.key]}
-            alt={option.name}
-            variant="square"
-            sx={{ width: 24, height: 24 }}
-          />
-          <Typography variant="body2">{option.name}</Typography>
-        </Box>
-      )}
+      renderOption={(props, option) => {
+        const { key, ...otherProps } = props;
+        return (
+          <Box component="li" key={key} {...otherProps} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Avatar
+              src={images[option.key]}
+              alt={option.name}
+              variant="square"
+              sx={{ width: 24, height: 24 }}
+            />
+            <Typography variant="body2">{option.name}</Typography>
+          </Box>
+        );
+      }}
       renderInput={(params) => (
         <TextField {...params} label={label ?? '选择产品'} placeholder={placeholder} />
       )}

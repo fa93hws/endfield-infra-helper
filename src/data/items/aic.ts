@@ -54,7 +54,7 @@ const parts = {
   crystonPart: '高晶零件',
   ferriumPart: '铁制零件',
   steelPart: '钢制零件',
-  cupriumPart: '铜制零件',
+  // cupriumPart: '铜制零件',
   amethystComponent: '紫晶装备原件',
   ferriumComponent: '蓝铁装备原件',
   crystonComponent: '高晶装备原件',

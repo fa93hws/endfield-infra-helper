@@ -16,7 +16,7 @@ import CrystonComponent from './assets/Cryston_Component.png';
 import CrystonFiber from './assets/Cryston_Fiber.png';
 import CrystonPart from './assets/Cryston_Part.png';
 import CrystonPowder from './assets/Cryston_Powder.png';
-import CupriumPart from './assets/Cuprium_Part.png';
+// import CupriumPart from './assets/Cuprium_Part.png';
 import DenseCarbonPowder from './assets/Dense_Carbon_Powder.png';
 import DenseFerriumPowder from './assets/Dense_Ferrium_Powder.png';
 import DenseOriginiumPowder from './assets/Dense_Originium_Powder.png';
@@ -130,7 +130,7 @@ export const images: Record<AicProductKey | NaturalItemKey, string> = {
   crystonPart: CrystonPart,
   ferriumPart: FerriumPart,
   steelPart: SteelPart,
-  cupriumPart: CupriumPart,
+  // cupriumPart: CupriumPart,
   amethystComponent: AmethystComponent,
   ferriumComponent: FerriumComponent,
   crystonComponent: CrystonComponent,
