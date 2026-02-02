@@ -18,7 +18,7 @@ const originiumReceipts: Receipt[] = [
   },
   {
     inputs: [{ item: 'origocrust', perMin: 30 }],
-    outputs: [{ item: 'originiumPowder', perMin: 30 }],
+    outputs: [{ item: 'origocrustPowder', perMin: 30 }],
   },
   {
     inputs: [{ item: 'originiumOre', perMin: 30 }],
