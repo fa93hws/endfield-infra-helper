@@ -1,4 +1,4 @@
-const oreRefined = {
+export const oreRefined = {
   carbon: '碳',
   origocrust: '晶体外壳',
   amethystFiber: '紫晶纤维',
@@ -10,7 +10,7 @@ const oreRefined = {
   steel: '钢块',
 };
 
-const orePowder = {
+export const orePowder = {
   carbonPowder: '碳粉末',
   originiumPowder: '源石粉末',
   origocrustPowder: '晶体外壳粉末',
@@ -24,7 +24,7 @@ const orePowder = {
   denseFerriumPowder: '致密蓝铁粉末',
 };
 
-const plants = {
+export const plantPowders = {
   sandleafPowder: '砂叶粉末',
   // aketinePowder: '酮化灌木粉末',
   buckflowerPowder: '荞花粉末',
@@ -33,14 +33,14 @@ const plants = {
   groundCitromePowder: '研磨柑实粉末',
 };
 
-const bottles = {
+export const bottles = {
   amethystBottle: '紫晶质瓶',
   crystonBottle: ' 高晶质瓶',
   ferriumBottle: '蓝铁瓶',
   steelBottle: '钢质瓶',
 };
 
-const batteries = {
+export const batteries = {
   batteryValleyLc: '低容谷地电池',
   // jincaoSolution: '锦草溶液',
   batteryValleySc: '中容谷底电池',
@@ -49,7 +49,7 @@ const batteries = {
   // batteryWulingLc: '低容武陵电池',
 };
 
-const parts = {
+export const parts = {
   amethystPart: '紫晶零件',
   crystonPart: '高晶零件',
   ferriumPart: '铁制零件',
@@ -60,7 +60,7 @@ const parts = {
   crystonComponent: '高晶装备原件',
 };
 
-const medicines = {
+export const medicines = {
   buckCapsuleC: '荞愈胶囊',
   buckCapsuleB: '优质荞愈胶囊',
   buckCapsuleA: '精选荞愈胶囊',
@@ -68,14 +68,22 @@ const medicines = {
   CannedCitromeB: '优质柑实罐头',
   CannedCitromeA: '精选柑实罐头',
 };
+
 export const allProduces = {
   ...oreRefined,
   ...orePowder,
-  ...plants,
+  ...plantPowders,
   ...bottles,
   ...batteries,
   ...parts,
   ...medicines,
 };
 
+export type OreRefinedKey = keyof typeof oreRefined;
+export type OrePowderKey = keyof typeof orePowder;
+export type PlantPowderKey = keyof typeof plantPowders;
+export type BottleKey = keyof typeof bottles;
+export type BatteryKey = keyof typeof batteries;
+export type PartKey = keyof typeof parts;
+export type MedicineKey = keyof typeof medicines;
 export type AicProductKey = keyof typeof allProduces;

@@ -24,4 +24,7 @@ export const naturalItems = {
   ...otherNaturalItems,
 };
 
+export type OreKey = keyof typeof ores;
+export type PlantKey = keyof typeof plants;
+export type OtherNaturalItemKey = keyof typeof otherNaturalItems;
 export type NaturalItemKey = keyof typeof naturalItems;
