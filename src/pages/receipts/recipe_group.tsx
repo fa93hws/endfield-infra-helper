@@ -9,7 +9,7 @@ import {
   AccordionDetails,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import RecipeItem from './recipe_item';
+import RecipeItem from '@ui/recipe/recipe_item';
 
 interface RecipeGroupProps {
   recipes: Receipt[];

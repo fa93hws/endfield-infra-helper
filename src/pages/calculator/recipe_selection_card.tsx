@@ -11,7 +11,7 @@ import {
   Chip,
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import RecipeItem from '../receipts/recipe_item';
+import RecipeItem from '@ui/recipe/recipe_item';
 import { Receipt } from '@data/receipts/type';
 import { AicProductKey, allProduces } from '@data/items/aic';
 
