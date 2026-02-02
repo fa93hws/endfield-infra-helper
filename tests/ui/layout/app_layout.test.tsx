@@ -14,7 +14,7 @@ describe('AppLayout', () => {
     expect(screen.getByText('Test Content')).toBeInTheDocument();
   });
 
-  it('should display the correct title based on current route', () => {
+  it('should always display the app title', () => {
     render(
       <AppLayout current="items">
         <div>Content</div>
@@ -22,7 +22,7 @@ describe('AppLayout', () => {
     );
 
     const appBar = screen.getByRole('banner');
-    expect(appBar).toHaveTextContent('首页');
+    expect(appBar).toHaveTextContent('终末地基建助手');
   });
 
   it('should have drawer closed by default', () => {

@@ -24,7 +24,6 @@ interface AppLayoutProps {
 
 export default function AppLayout({ children, current }: AppLayoutProps) {
   const [open, setOpen] = useState(false);
-  const title = navItems[current];
 
   const handleDrawerToggle = () => {
     setOpen(!open);
@@ -64,7 +63,7 @@ export default function AppLayout({ children, current }: AppLayoutProps) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div">
-            {title}
+            终末地基建助手
           </Typography>
         </Toolbar>
       </AppBar>
