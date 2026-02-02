@@ -2,6 +2,7 @@ import { oreReceipts, bottleReceipts } from './ore';
 import { plantReceipts, medicineReceipts } from './medicine';
 import { batteryReceipts } from './battery';
 import { Receipt } from './type';
+import { components } from './component';
 
 export const allReceipts = [
   ...oreReceipts,
@@ -17,6 +18,7 @@ export interface ReceiptSection {
 }
 
 export const receiptSections: ReceiptSection[] = [
+  { title: '装备组件', recipes: components },
   { title: '电池', recipes: batteryReceipts },
   { title: '药品', recipes: medicineReceipts },
   { title: '瓶子', recipes: bottleReceipts },
