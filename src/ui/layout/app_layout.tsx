@@ -12,23 +12,19 @@ import {
   Typography,
 } from '@mui/material';
 import { Menu as MenuIcon } from '@mui/icons-material';
-import { NavItem, NAV_ITEMS } from './nav_items';
+import { navItems, RouteKind } from '../routes/nav_items';
 import './global.css';
 
 const drawerWidth = 240;
 
 interface AppLayoutProps {
   children: ReactNode;
-  title?: string;
-  navItems?: NavItem[];
+  current: RouteKind;
 }
 
-export default function AppLayout({
-  children,
-  title = 'My App',
-  navItems = NAV_ITEMS,
-}: AppLayoutProps) {
+export default function AppLayout({ children, current }: AppLayoutProps) {
   const [open, setOpen] = useState(false);
+  const title = navItems[current];
 
   const handleDrawerToggle = () => {
     setOpen(!open);
@@ -37,10 +33,10 @@ export default function AppLayout({
   const drawer = (
     <Box>
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item.label} disablePadding>
-            <ListItemButton onClick={item.onClick}>
-              <ListItemText primary={item.label} />
+        {Object.entries(navItems).map(([, label]) => (
+          <ListItem key={label} disablePadding>
+            <ListItemButton>
+              <ListItemText primary={label} />
             </ListItemButton>
           </ListItem>
         ))}

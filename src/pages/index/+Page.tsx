@@ -1,8 +1,8 @@
-import AppLayout from '../../components/layout/app_layout';
+import AppLayout from '../../ui/layout/app_layout';
 
 export default function Page() {
   return (
-    <AppLayout title="My App">
+    <AppLayout current="home">
       <h1>Hello World</h1>
     </AppLayout>
   );
