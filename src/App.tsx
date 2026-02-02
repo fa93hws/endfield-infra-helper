@@ -19,12 +19,7 @@ import {
   ListItemButton,
   ListItemText,
 } from '@mui/material'
-import {
-  Menu as MenuIcon,
-  Bolt,
-  PhoneIphone,
-  Security,
-} from '@mui/icons-material'
+import { Menu as MenuIcon, Bolt, PhoneIphone, Security } from '@mui/icons-material'
 
 function App() {
   const [count, setCount] = useState<number>(0)
@@ -62,19 +57,11 @@ function App() {
       {/* AppBar */}
       <AppBar position="sticky">
         <Toolbar>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, fontWeight: 'bold' }}
-          >
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 'bold' }}>
             Endfield Infra Helper
           </Typography>
           {isMobile ? (
-            <IconButton
-              color="inherit"
-              edge="start"
-              onClick={handleDrawerToggle}
-            >
+            <IconButton color="inherit" edge="start" onClick={handleDrawerToggle}>
               <MenuIcon />
             </IconButton>
           ) : (
@@ -136,8 +123,8 @@ function App() {
                 fontSize: { xs: '1rem', sm: '1.25rem', md: '1.5rem' },
               }}
             >
-              A modern, responsive, and mobile-friendly interface built with React,
-              TypeScript, and Material-UI
+              A modern, responsive, and mobile-friendly interface built with React, TypeScript, and
+              Material-UI
             </Typography>
           </Box>
 
@@ -177,12 +164,7 @@ function App() {
                   >
                     Increment
                   </Button>
-                  <Button
-                    variant="outlined"
-                    fullWidth
-                    size="large"
-                    onClick={() => setCount(0)}
-                  >
+                  <Button variant="outlined" fullWidth size="large" onClick={() => setCount(0)}>
                     Reset
                   </Button>
                 </Box>
@@ -226,17 +208,11 @@ function App() {
                       <Bolt sx={{ fontSize: 40, color: 'primary.main' }} />
                     </Box>
                   </Box>
-                  <Typography
-                    variant="h6"
-                    component="h3"
-                    gutterBottom
-                    sx={{ fontWeight: 'bold' }}
-                  >
+                  <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 'bold' }}>
                     Fast Performance
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Built with Vite for lightning-fast development and optimized
-                    production builds.
+                    Built with Vite for lightning-fast development and optimized production builds.
                   </Typography>
                 </CardContent>
               </Card>
@@ -276,17 +252,11 @@ function App() {
                       <PhoneIphone sx={{ fontSize: 40, color: 'success.main' }} />
                     </Box>
                   </Box>
-                  <Typography
-                    variant="h6"
-                    component="h3"
-                    gutterBottom
-                    sx={{ fontWeight: 'bold' }}
-                  >
+                  <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 'bold' }}>
                     Mobile Friendly
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Fully responsive design that looks great on all devices from
-                    phones to desktops.
+                    Fully responsive design that looks great on all devices from phones to desktops.
                   </Typography>
                 </CardContent>
               </Card>
@@ -326,17 +296,11 @@ function App() {
                       <Security sx={{ fontSize: 40, color: 'secondary.main' }} />
                     </Box>
                   </Box>
-                  <Typography
-                    variant="h6"
-                    component="h3"
-                    gutterBottom
-                    sx={{ fontWeight: 'bold' }}
-                  >
+                  <Typography variant="h6" component="h3" gutterBottom sx={{ fontWeight: 'bold' }}>
                     Type-Safe
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    Full TypeScript support for enhanced code quality and developer
-                    experience.
+                    Full TypeScript support for enhanced code quality and developer experience.
                   </Typography>
                 </CardContent>
               </Card>

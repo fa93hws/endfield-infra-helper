@@ -29,6 +29,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Run Prettier
+        run: pnpm format
+
+      - name: Run ESLint
+        run: pnpm lint:ts
+
       - name: Run type check
         run: pnpm lint:ts:type
 
