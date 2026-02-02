@@ -6,7 +6,7 @@ import AppLayout from '@ui/layout/app_layout';
 describe('AppLayout', () => {
   it('should render children content', () => {
     render(
-      <AppLayout current="home">
+      <AppLayout current="items">
         <div>Test Content</div>
       </AppLayout>,
     );
@@ -16,18 +16,18 @@ describe('AppLayout', () => {
 
   it('should display the correct title based on current route', () => {
     render(
-      <AppLayout current="home">
+      <AppLayout current="items">
         <div>Content</div>
       </AppLayout>,
     );
 
     const appBar = screen.getByRole('banner');
-    expect(appBar).toHaveTextContent('Home');
+    expect(appBar).toHaveTextContent('物品列表');
   });
 
   it('should have drawer closed by default', () => {
     const { container } = render(
-      <AppLayout current="home">
+      <AppLayout current="items">
         <div>Content</div>
       </AppLayout>,
     );
@@ -40,7 +40,7 @@ describe('AppLayout', () => {
     const user = userEvent.setup();
 
     const { container } = render(
-      <AppLayout current="home">
+      <AppLayout current="items">
         <div>Content</div>
       </AppLayout>,
     );
@@ -55,13 +55,13 @@ describe('AppLayout', () => {
 
   it('should render navigation items', () => {
     render(
-      <AppLayout current="home">
+      <AppLayout current="items">
         <div>Content</div>
       </AppLayout>,
     );
 
     // Check if navigation item exists
-    const navItems = screen.getAllByText('Home');
+    const navItems = screen.getAllByText('物品列表');
     // Should have at least one (in the title or nav)
     expect(navItems.length).toBeGreaterThan(0);
   });

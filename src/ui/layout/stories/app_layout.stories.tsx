@@ -15,7 +15,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    current: 'home',
+    current: 'items',
     children: <h1>Hello World</h1>,
   },
 };

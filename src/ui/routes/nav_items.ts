@@ -1,9 +1,9 @@
-export type RouteKind = 'home';
+export type RouteKind = 'items';
 
 export const routes: Record<RouteKind, string> = {
-  home: '/',
+  items: '/',
 };
 
 export const navItems: Record<RouteKind, string> = {
-  home: 'Home',
+  items: '物品列表',
 };
