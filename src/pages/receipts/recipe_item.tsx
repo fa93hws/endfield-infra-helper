@@ -1,0 +1,75 @@
+import { images } from '@data/items/images';
+import { aicProducts } from '@data/items/aic';
+import { naturalItems } from '@data/items/natural';
+import { Receipt } from '@data/receipts/type';
+import { Box, Typography, Stack, Avatar } from '@mui/material';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+
+interface RecipeItemProps {
+  recipe: Receipt;
+}
+
+const allItems = { ...naturalItems, ...aicProducts };
+
+export default function RecipeItem({ recipe }: RecipeItemProps) {
+  return (
+    <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap">
+      {/* Inputs */}
+      <Stack direction="row" spacing={1} alignItems="center">
+        {recipe.inputs.map((input, i) => (
+          <Stack key={i} direction="row" spacing={1} alignItems="center">
+            <Avatar
+              src={images[input.item]}
+              alt={allItems[input.item]}
+              variant="square"
+              sx={{ width: 32, height: 32 }}
+            />
+            <Box>
+              <Typography variant="body2" noWrap>
+                {allItems[input.item]}
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                {input.perMin}/min
+              </Typography>
+            </Box>
+            {i < recipe.inputs.length - 1 && (
+              <Typography variant="body2" color="text.secondary">
+                +
+              </Typography>
+            )}
+          </Stack>
+        ))}
+      </Stack>
+
+      {/* Arrow */}
+      <ArrowForwardIcon color="action" />
+
+      {/* Outputs */}
+      <Stack direction="row" spacing={1} alignItems="center">
+        {recipe.outputs.map((output, i) => (
+          <Stack key={i} direction="row" spacing={1} alignItems="center">
+            <Avatar
+              src={images[output.item]}
+              alt={allItems[output.item]}
+              variant="square"
+              sx={{ width: 32, height: 32 }}
+            />
+            <Box>
+              <Typography variant="body2" noWrap>
+                {allItems[output.item]}
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                {output.perMin}/min
+              </Typography>
+            </Box>
+            {i < recipe.outputs.length - 1 && (
+              <Typography variant="body2" color="text.secondary">
+                +
+              </Typography>
+            )}
+          </Stack>
+        ))}
+      </Stack>
+    </Stack>
+  );
+}

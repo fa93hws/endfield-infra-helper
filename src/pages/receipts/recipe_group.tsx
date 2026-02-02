@@ -1,0 +1,54 @@
+import { Receipt } from '@data/receipts/type';
+import {
+  Box,
+  Typography,
+  Stack,
+  Paper,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import RecipeItem from './recipe_item';
+
+interface RecipeGroupProps {
+  recipes: Receipt[];
+}
+
+export default function RecipeGroup({ recipes }: RecipeGroupProps) {
+  const firstRecipe = recipes[0];
+  const remainingRecipes = recipes.slice(1);
+  const hasMore = remainingRecipes.length > 0;
+
+  return (
+    <Paper variant="outlined">
+      {/* Always show the first recipe */}
+      <Box sx={{ p: 2 }}>
+        <RecipeItem recipe={firstRecipe} />
+      </Box>
+
+      {/* Show remaining recipes in accordion if there are more */}
+      {hasMore && (
+        <Accordion
+          defaultExpanded={false}
+          sx={{ boxShadow: 'none', '&:before': { display: 'none' } }}
+        >
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            <Typography variant="body2" color="text.secondary">
+              其他配方({remainingRecipes.length})
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>
+            <Stack spacing={1}>
+              {remainingRecipes.map((recipe, idx) => (
+                <Paper key={idx} variant="outlined" sx={{ p: 2 }}>
+                  <RecipeItem recipe={recipe} />
+                </Paper>
+              ))}
+            </Stack>
+          </AccordionDetails>
+        </Accordion>
+      )}
+    </Paper>
+  );
+}
