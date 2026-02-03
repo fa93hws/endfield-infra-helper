@@ -128,52 +128,14 @@ public/
 
 本项目使用 CSV 文件作为数据源，通过自动生成工具转换为 TypeScript 代码。
 
-### 更新数据
+### 快速开始
 
-1. 编辑 CSV 文件：
-   - `tools/receipt_gen/csv/items.csv` - 物品数据
-   - `tools/receipt_gen/csv/receipts.csv` - 配方数据
-
-2. 运行生成器：
-
-   ```bash
-   pnpm run autogen
-   ```
-
+1. 编辑 CSV 文件：`tools/receipt_gen/csv/items.csv` 和 `receipts.csv`
+2. 运行生成器：`pnpm run autogen`
 3. 生成的文件会自动更新到 `src/receipts/generated/`
 
-### CSV 格式
-
-**items.csv**
-
-```csv
-category,id,english_name,chinese_name
-ore_refined,carbon,Carbon,碳
-battery,battery_valley_hc,High Capacity Valley Battery,高容谷底电池
-```
-
-**receipts.csv**
-
-```csv
-out_1_item,out_1_qty,in_1_item,in_1_qty,in_2_item,in_2_qty
-carbon,30,buckflower,30,,
-amethyst_component,6,amethyst_part,30,origocrust,30
-```
-
-### 数据完整性
-
-项目包含完整的数据验证测试：
-
-- 所有物品都有对应的图片文件
-- 所有制造物品都在至少一个配方的输出中
-- 所有配方引用的物品都存在
-- 所有配方数据结构完整且有效
-
-运行测试确保数据完整性：
-
-```bash
-pnpm test
-```
+详细的 CSV 格式说明、数据验证规则和开发指南请参考：
+📖 [tools/receipt_gen/README.md](tools/receipt_gen/README.md)
 
 ## 贡献
 
