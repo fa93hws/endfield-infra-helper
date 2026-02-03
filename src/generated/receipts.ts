@@ -516,5 +516,5 @@ export const receipts: Receipt[] = [
     outputs: [
       { item: 'yazhenSprayB', perMin: 6 },
     ],
-  }
+  },
 ];

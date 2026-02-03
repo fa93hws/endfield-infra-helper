@@ -53,9 +53,21 @@ function generateItemsTS(items: ItemRow[]): string {
   lines.push('// Generated from tools/receipt_gen/csv/items.csv');
   lines.push('');
 
+  // Collect unique categories
+  const categories = [...new Set(items.map((item) => item.category))].sort();
+
+  // Add category enum (using snake_case keys to match values)
+  lines.push('export enum ItemCategory {');
+  categories.forEach((category) => {
+    lines.push(`  ${category},`);
+  });
+  lines.push('}');
+  lines.push('');
+
   // Add interface
   lines.push('export interface Item {');
   lines.push('  label: string;');
+  lines.push('  category: ItemCategory;');
   lines.push('  imagePath: string;');
   lines.push('}');
   lines.push('');
@@ -64,14 +76,15 @@ function generateItemsTS(items: ItemRow[]): string {
   lines.push('export const items: Record<string, Item> = {');
 
   // Generate each item entry
-  items.forEach((item, index) => {
+  items.forEach((item) => {
     const camelCaseKey = toCamelCase(item.id);
     const imagePath = `/images/items/${item.id}.webp`;
 
     lines.push(`  ${camelCaseKey}: {`);
     lines.push(`    label: '${item.chineseName}',`);
+    lines.push(`    category: ItemCategory.${item.category},`);
     lines.push(`    imagePath: '${imagePath}',`);
-    lines.push(`  }${index < items.length - 1 ? ',' : ''}`);
+    lines.push(`  },`);
   });
 
   // Close items object

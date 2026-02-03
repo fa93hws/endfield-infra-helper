@@ -74,7 +74,7 @@ function generateReceiptsTS(receipts: ReceiptRow[]): string {
   lines.push('export const receipts: Receipt[] = [');
 
   // Generate each receipt entry
-  receipts.forEach((receipt, index) => {
+  receipts.forEach((receipt) => {
     lines.push('  {');
 
     // Inputs
@@ -90,7 +90,7 @@ function generateReceiptsTS(receipts: ReceiptRow[]): string {
     lines.push(`      { item: '${toCamelCase(receipt.out1Item)}', perMin: ${receipt.out1Qty} },`);
     lines.push('    ],');
 
-    lines.push(`  }${index < receipts.length - 1 ? ',' : ''}`);
+    lines.push(`  },`);
   });
 
   // Close receipts array
