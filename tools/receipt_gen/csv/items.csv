@@ -1,0 +1,64 @@
+product_category,id,english_name,chinese_name
+battery,battery_valley_hc,High Capacity Valley Battery,高容谷底电池
+battery,battery_valley_lc,Low Capacity Valley Battery,低容谷地电池
+battery,battery_valley_sc,Standard Capacity Valley Battery,中容谷底电池
+battery,battery_wuling_lc,Low Capacity Wuling Battery,低容武陵电池
+bottle,amethyst_bottle,Amethyst Bottle,紫晶质瓶
+bottle,cryston_bottle,Cryston Bottle,高晶质瓶
+bottle,ferrium_bottle,Ferrium Bottle,蓝铁瓶
+bottle,steel_bottle,Steel Bottle,钢质瓶
+bottled_solution,ferrium_bottle_yazhen_solution,Ferrium Bottle Yazhen Solution,蓝贴瓶装芽针溶液
+component,amethyst_component,Amethyst Component,紫晶装备原件
+component,cryston_component,Cryston Component,高晶装备原件
+component,ferrium_component,Ferrium Component,蓝铁装备原件
+component,xiranite_component,Xiranite Component,息壤装备原件
+medicine,buck_capsule_a,Buck Capsule A,精选荞愈胶囊
+medicine,buck_capsule_b,Buck Capsule B,优质荞愈胶囊
+medicine,buck_capsule_c,Buck Capsule C,荞愈胶囊
+medicine,canned_citrome_a,Canned Citrome A,精选柑实罐头
+medicine,canned_citrome_b,Canned Citrome B,优质柑实罐头
+medicine,canned_citrome_c,Canned Citrome C,柑实罐头
+medicine,yazhen_spray_b,Yazhen Spray B,芽针喷剂
+natural_ore,amethyst_ore,Amethyst Ore,紫水晶矿
+natural_ore,ferrium_ore,Ferrium Ore,蓝铁矿
+natural_ore,originium_ore,Originium Ore,源石原矿
+natural_plant,buckflower,Buckflower,荞花
+natural_plant,citrome,Citrome,柑实
+natural_plant,firebuckle,Firebuckle,映火荞花
+natural_plant,jincao,Jincao,锦草
+natural_plant,sandleaf,Sandleaf,砂叶
+natural_plant,yazhen,Yazhen,芽针
+ore_powder,amethyst_powder,Amethyst Powder,紫晶粉末
+ore_powder,carbon_powder,Carbon Powder,碳粉末
+ore_powder,cryston_powder,Cryston Powder,高晶粉末
+ore_powder,dense_carbon_powder,Dense Carbon Powder,致密碳粉末
+ore_powder,dense_ferrium_powder,Dense Ferrium Powder,致密蓝铁粉末
+ore_powder,dense_originium_powder,Dense Originium Powder,致密源石粉末
+ore_powder,dense_origocrust_powder,Dense Origocrust Powder,致密晶体粉末
+ore_powder,ferrium_powder,Ferrium Powder,蓝铁粉末
+ore_powder,originium_powder,Originium Powder,源石粉末
+ore_powder,origocrust_powder,Origocrust Powder,晶体外壳粉末
+ore_refined,amethyst_fiber,Amethyst Fiber,紫晶纤维
+ore_refined,carbon,Carbon,碳
+ore_refined,cryston_fiber,Cryston Fiber,高晶纤维
+ore_refined,ferrium,Ferrium,蓝铁锭
+ore_refined,origocrust,Origocrust,晶体外壳
+ore_refined,packed_origocrust,Packed Origocrust,密制晶体
+ore_refined,stabilized_carbon,Stabilized Carbon,稳定碳块
+ore_refined,steel,Steel,钢块
+ore_refined,xiranite,Xiranite,息壤
+other,clean_water,Clean Water,纯净水
+part,amethyst_part,Amethyst Part,紫晶零件
+part,cryston_part,Cryston Part,高晶零件
+part,ferrium_part,Ferrium Part,铁制零件
+part,steel_part,Steel Part,钢制零件
+plant_powder,buckflower_powder,Buckflower Powder,荞花粉末
+plant_powder,citrome_powder,Citrome Powder,柑实粉末
+plant_powder,ground_buckflower_powder,Ground Buckflower Powder,细磨荞花粉末
+plant_powder,ground_citrome_powder,Ground Citrome Powder,研磨柑实粉末
+plant_powder,sandleaf_powder,Sandleaf Powder,砂叶粉末
+plant_powder,yazhen_powder,Yazhen Powder,芽针粉末
+plant_seed,buckflower_seed,Buckflower Seed,荞花种子
+plant_seed,citrome_seed,Citrome Seed,柑实种子
+plant_seed,sandleaf_seed,Sandleaf Seed,砂叶种子
+solution,yazhen_solution,Yazhen Solution,芽针溶液
