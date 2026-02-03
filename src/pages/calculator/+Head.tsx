@@ -2,32 +2,39 @@ export function Head() {
   const title = '生产计算器 - 终末地基建助手';
   const description =
     '终末地（Endfield）基建生产链计算器和配平工具，选择目标产品和数量，自动计算所需的自然资源和中间产品。支持多配方选择，优化生产链配平，提升基建效率。';
+  const url = 'https://endfield-industry-helper.pages.dev/calculator';
 
   return (
     <>
       <title>{title}</title>
       <meta name="description" content={description} />
 
+      {/* Canonical URL */}
+      <link rel="canonical" href={url} />
+
       {/* Structured Data - SoftwareApplication */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          '@context': 'https://schema.org',
-          '@type': 'WebPage',
-          name: title,
-          description: description,
-          isPartOf: {
-            '@type': 'WebApplication',
-            name: '终末地基建助手',
-          },
-          potentialAction: {
-            '@type': 'CalculateAction',
-            target: {
-              '@type': 'EntryPoint',
-              urlTemplate: 'https://endfield-industry-helper.pages.dev/calculator',
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebPage',
+            name: title,
+            description: description,
+            isPartOf: {
+              '@type': 'WebApplication',
+              name: '终末地基建助手',
             },
-          },
-        })}
-      </script>
+            potentialAction: {
+              '@type': 'CalculateAction',
+              target: {
+                '@type': 'EntryPoint',
+                urlTemplate: 'https://endfield-industry-helper.pages.dev/calculator',
+              },
+            },
+          }),
+        }}
+      />
     </>
   );
 }
