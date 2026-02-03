@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { TextField } from '@mui/material';
 
 interface QuantityInputProps {
@@ -7,21 +8,31 @@ interface QuantityInputProps {
 }
 
 export function QuantityInput({ value, onChange, label }: QuantityInputProps) {
+  const [inputValue, setInputValue] = useState(String(value));
+
+  useEffect(() => {
+    setInputValue(String(value));
+  }, [value]);
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = parseFloat(event.target.value);
+    const stringValue = event.target.value;
+    setInputValue(stringValue);
+
+    const newValue = parseFloat(stringValue);
     if (!isNaN(newValue) && newValue > 0) {
       onChange(newValue);
+    } else if (stringValue === '' || stringValue === '0') {
+      onChange(0);
     }
   };
 
   return (
     <TextField
       type="number"
-      value={value}
+      value={inputValue}
       onChange={handleChange}
       label={label ?? '/分钟'}
       size="small"
-      inputProps={{ min: 0, step: 1 }}
       sx={{
         '& input[type=number]': {
           MozAppearance: 'textfield',
