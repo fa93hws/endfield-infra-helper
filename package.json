@@ -14,7 +14,8 @@
     "test": "vitest --run",
     "test:coverage": "vitest --coverage",
     "storybook:dev": "storybook dev -p 6006 -c config/storybook",
-    "storybook:build": "storybook build -c config/storybook"
+    "storybook:build": "storybook build -c config/storybook",
+    "autogen": "tsx tools/receipt_gen/index.ts"
   },
   "keywords": [],
   "author": "",
@@ -42,6 +43,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^25.2.0",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^5.1.2",
@@ -54,6 +56,7 @@
     "jsdom": "^27.4.0",
     "prettier": "^3.4.2",
     "storybook": "^8.6.15",
+    "tsx": "^4.21.0",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.54.0",
     "vite": "^6.0.5",
