@@ -1,5 +1,7 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import type { Receipt } from '@receipts';
+import { usePageContext } from 'vike-react/usePageContext';
+import { navigate } from 'vike/client/router';
 import {
   aggregateIntermediateProducts,
   aggregateNaturalResources,
@@ -23,9 +25,49 @@ export interface CalculatorState {
   intermediateProducts: Map<string, IntermediateProduct>;
 }
 
+// Parse URL outputs parameter: "item1:qty1,item2:qty2" -> DesiredOutput[]
+function parseOutputsFromURL(urlParam: string): DesiredOutput[] {
+  if (!urlParam) return [];
+
+  return urlParam.split(',').map((part, index) => {
+    const [item, qtyStr] = part.split(':');
+    const quantity = Number.parseFloat(qtyStr) || 30;
+    return {
+      id: `${Date.now()}-${index}`,
+      item,
+      quantity,
+    };
+  });
+}
+
+// Serialize DesiredOutput[] to URL format: "item1:qty1,item2:qty2"
+function serializeOutputsToURL(outputs: DesiredOutput[]): string {
+  return outputs.map((output) => `${output.item}:${output.quantity}`).join(',');
+}
+
 export function useCalculator() {
-  const [desiredOutputs, setDesiredOutputs] = useState<DesiredOutput[]>([]);
+  const pageContext = usePageContext();
+  const urlOutputsParam = (pageContext.urlParsed.search.outputs as string) || '';
+
+  // Initialize state from URL
+  const [desiredOutputs, setDesiredOutputs] = useState<DesiredOutput[]>(() =>
+    parseOutputsFromURL(urlOutputsParam),
+  );
   const [recipeChoices, setRecipeChoices] = useState<Map<string, Receipt>>(new Map());
+
+  // Update URL when desiredOutputs change
+  useEffect(() => {
+    const serialized = serializeOutputsToURL(desiredOutputs);
+    const searchParams = new URLSearchParams();
+
+    if (serialized) {
+      searchParams.set('outputs', serialized);
+    }
+
+    navigate(`/calculator?${searchParams.toString()}`, {
+      keepScrollPosition: true,
+    });
+  }, [desiredOutputs]);
 
   // Memoize the recipe map since it doesn't change
   const recipeMap = useMemo(() => buildRecipeMap(), []);

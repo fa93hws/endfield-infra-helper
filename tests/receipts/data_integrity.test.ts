@@ -9,6 +9,23 @@ const repoRoot = path.resolve(__dirname, '../..');
 const publicImagesDir = path.join(repoRoot, 'public/images/items');
 
 describe('Data Integrity', () => {
+  describe('Item IDs', () => {
+    it('should not contain URL delimiter characters (: or ,)', () => {
+      const invalidItems: string[] = [];
+
+      Object.keys(items).forEach((itemId) => {
+        if (itemId.includes(':') || itemId.includes(',')) {
+          invalidItems.push(itemId);
+        }
+      });
+
+      expect(
+        invalidItems,
+        `The following item IDs contain : or , which are used as URL delimiters:\n${invalidItems.join('\n')}`,
+      ).toEqual([]);
+    });
+  });
+
   describe('Image Files', () => {
     it('should have existing image files for all items', () => {
       const missingImages: string[] = [];
