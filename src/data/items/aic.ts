@@ -32,6 +32,7 @@ export const plantPowders = {
   groundBuckflowerPowder: '细磨荞花粉末',
   citromePowder: '柑实粉末',
   groundCitromePowder: '研磨柑实粉末',
+  yazhenPowder: '芽针粉末',
 };
 
 export const bottles = {
@@ -47,7 +48,7 @@ export const batteries = {
   batteryValleySc: '中容谷底电池',
   // yazhenSolution: '牙珍溶液',
   batteryValleyHc: '高容谷底电池',
-  // batteryWulingLc: '低容武陵电池',
+  batteryWulingLc: '低容武陵电池',
 };
 
 export const parts = {
@@ -59,6 +60,7 @@ export const parts = {
   amethystComponent: '紫晶装备原件',
   ferriumComponent: '蓝铁装备原件',
   crystonComponent: '高晶装备原件',
+  xiraniteComponent: '息壤装备原件',
 };
 
 export const medicines = {
@@ -68,6 +70,15 @@ export const medicines = {
   CannedCitromeC: '柑实罐头',
   CannedCitromeB: '优质柑实罐头',
   CannedCitromeA: '精选柑实罐头',
+  yazhenSprayB: '芽针喷剂',
+};
+
+const solutions = {
+  yazhenSolution: '芽针溶液',
+};
+
+const bottledSolutions = {
+  ferriumBottleYazhenSolution: '蓝贴瓶装芽针溶液',
 };
 
 export const allProduces = {
@@ -78,6 +89,8 @@ export const allProduces = {
   ...batteries,
   ...parts,
   ...medicines,
+  ...solutions,
+  ...bottledSolutions,
 };
 
 export type OreRefinedKey = keyof typeof oreRefined;
@@ -87,4 +100,6 @@ export type BottleKey = keyof typeof bottles;
 export type BatteryKey = keyof typeof batteries;
 export type PartKey = keyof typeof parts;
 export type MedicineKey = keyof typeof medicines;
+export type SolutionKey = keyof typeof solutions;
+export type BottledSolutionKey = keyof typeof bottledSolutions;
 export type AicProductKey = keyof typeof allProduces;

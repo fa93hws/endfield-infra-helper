@@ -40,4 +40,17 @@ export const components: Receipt[] = [
     ],
     outputs: [{ item: 'crystonComponent', perMin: 6 }],
   },
+  {
+    inputs: [
+      {
+        item: 'xiranite',
+        perMin: 60,
+      },
+      {
+        item: 'packedOrigocrust',
+        perMin: 60,
+      },
+    ],
+    outputs: [{ item: 'xiraniteComponent', perMin: 6 }],
+  },
 ];

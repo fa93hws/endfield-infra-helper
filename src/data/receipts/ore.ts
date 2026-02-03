@@ -178,6 +178,10 @@ export const bottleReceipts: Receipt[] = [
     inputs: [{ item: 'steel', perMin: 60 }],
     outputs: [{ item: 'steelBottle', perMin: 30 }],
   },
+  {
+    inputs: [{ item: 'crystonFiber', perMin: 60 }],
+    outputs: [{ item: 'crystonBottle', perMin: 30 }],
+  },
 ];
 
 export const oreReceipts = [

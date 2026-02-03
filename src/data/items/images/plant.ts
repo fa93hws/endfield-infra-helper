@@ -13,6 +13,7 @@ import Jincao from './assets/Jincao.png';
 import SandleafPowder from './assets/Sandleaf_Powder.png';
 import SandLeafSeed from './assets/Sandleaf_Seed.png';
 import Sandleaf from './assets/Sandleaf.png';
+import YazhenPowder from './assets/Yazhen_Powder.webp';
 import Yazhen from './assets/Yazhen.png';
 
 export const plantImages: Record<PlantKey, string> = {
@@ -36,4 +37,5 @@ export const plantPowderImages: Record<PlantPowderKey, string> = {
   groundBuckflowerPowder: GroundBucketFlowerPowder,
   citromePowder: CitromePowder,
   groundCitromePowder: GroundCitromePowder,
+  yazhenPowder: YazhenPowder,
 };

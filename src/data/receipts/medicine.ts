@@ -26,6 +26,31 @@ export const plantReceipts: Receipt[] = [
     ],
     outputs: [{ item: 'groundCitromePowder', perMin: 30 }],
   },
+  // zhenya
+  {
+    inputs: [{ item: 'yazhen', perMin: 30 }],
+    outputs: [{ item: 'yazhenPowder', perMin: 30 }],
+  },
+];
+
+export const solutionReceipts: Receipt[] = [
+  {
+    inputs: [
+      { item: 'yazhenPowder', perMin: 30 },
+      { item: 'cleanWater', perMin: 30 },
+    ],
+    outputs: [{ item: 'yazhenSolution', perMin: 30 }],
+  },
+];
+
+export const bottledSolutionReceipts: Receipt[] = [
+  {
+    inputs: [
+      { item: 'yazhenSolution', perMin: 30 },
+      { item: 'ferriumBottle', perMin: 30 },
+    ],
+    outputs: [{ item: 'ferriumBottleYazhenSolution', perMin: 30 }],
+  },
 ];
 
 export const medicineReceipts: Receipt[] = [
@@ -70,5 +95,12 @@ export const medicineReceipts: Receipt[] = [
       { item: 'steelBottle', perMin: 60 },
     ],
     outputs: [{ item: 'CannedCitromeA', perMin: 6 }],
+  },
+  {
+    inputs: [
+      { item: 'ferriumBottleYazhenSolution', perMin: 60 },
+      { item: 'ferriumPart', perMin: 30 },
+    ],
+    outputs: [{ item: 'yazhenSprayB', perMin: 6 }],
   },
 ];

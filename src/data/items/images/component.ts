@@ -6,6 +6,7 @@ import CrystonPart from './assets/Cryston_Part.png';
 import FerriumComponent from './assets/Ferrium_Component.png';
 import FerriumPart from './assets/Ferrium_Part.png';
 import SteelPart from './assets/Steel_Part.png';
+import XiraniteComponent from './assets/Xiranite_Component.webp';
 
 export const componentImages: Record<PartKey, string> = {
   amethystPart: AmethystPart,
@@ -15,4 +16,5 @@ export const componentImages: Record<PartKey, string> = {
   amethystComponent: AmethystComponent,
   ferriumComponent: FerriumComponent,
   crystonComponent: CrystonComponent,
+  xiraniteComponent: XiraniteComponent,
 };
