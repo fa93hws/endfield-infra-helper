@@ -3,4 +3,4 @@ dist
 storybook-static
 pnpm-lock.yaml
 *.log
-src/generated
+src/receipts/generated

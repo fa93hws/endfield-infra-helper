@@ -51,6 +51,7 @@ function generateItemsTS(items: ItemRow[]): string {
   // Add file header
   lines.push('// This file is auto-generated. Do not edit manually.');
   lines.push('// Generated from tools/receipt_gen/csv/items.csv');
+  lines.push('// Output: src/receipts/generated/items.ts');
   lines.push('');
 
   // Collect unique categories
@@ -97,7 +98,7 @@ function generateItemsTS(items: ItemRow[]): string {
 // Main function
 export function genItems() {
   const csvPath = path.join(__dirname, 'csv', 'items.csv');
-  const outputPath = path.join(__dirname, '../../src/generated/items.ts');
+  const outputPath = path.join(__dirname, '../../src/receipts/generated/items.ts');
 
   console.log('Reading items from:', csvPath);
 

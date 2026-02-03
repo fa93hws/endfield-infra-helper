@@ -1,5 +1,6 @@
 // This file is auto-generated. Do not edit manually.
 // Generated from tools/receipt_gen/csv/items.csv
+// Output: src/receipts/generated/items.ts
 
 export enum ItemCategory {
   battery,

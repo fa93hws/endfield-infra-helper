@@ -55,6 +55,7 @@ function generateReceiptsTS(receipts: ReceiptRow[]): string {
   // Add file header
   lines.push('// This file is auto-generated. Do not edit manually.');
   lines.push('// Generated from tools/receipt_gen/csv/receipts.csv');
+  lines.push('// Output: src/receipts/generated/receipts.ts');
   lines.push('');
 
   // Add interfaces
@@ -103,7 +104,7 @@ function generateReceiptsTS(receipts: ReceiptRow[]): string {
 // Main function
 export function genReceipts() {
   const csvPath = path.join(__dirname, 'csv', 'receipts.csv');
-  const outputPath = path.join(__dirname, '../../src/generated/receipts.ts');
+  const outputPath = path.join(__dirname, '../../src/receipts/generated/receipts.ts');
 
   console.log('Reading receipts from:', csvPath);
 
