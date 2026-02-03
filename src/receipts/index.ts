@@ -6,9 +6,6 @@ import { receipts, type Receipt } from './generated/receipts';
 export { items, type Item, ItemCategory } from './generated/items';
 export { receipts, type Receipt, type ReceiptItem } from './generated/receipts';
 
-// Export all item keys as a union type
-export type ItemKey = keyof typeof items;
-
 // Export images object (image paths from items)
 export const images: Record<string, string> = Object.fromEntries(
   Object.entries(items).map(([key, item]) => [key, item.imagePath]),
@@ -37,8 +34,6 @@ export const allProduces = filterItemsByCategory([
   ItemCategory.bottled_solution,
 ]);
 
-export type AicProductKey = keyof typeof allProduces;
-
 // Natural Items (resources)
 export const naturalItems = filterItemsByCategory([
   ItemCategory.natural_ore,
@@ -46,8 +41,6 @@ export const naturalItems = filterItemsByCategory([
   ItemCategory.plant_seed,
   ItemCategory.other,
 ]);
-
-export type NaturalItemKey = keyof typeof naturalItems;
 
 // Natural item sub-categories
 export const ores = filterItemsByCategory([ItemCategory.natural_ore]);

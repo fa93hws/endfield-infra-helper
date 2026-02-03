@@ -1,13 +1,13 @@
 import { Paper, Stack, Typography } from '@mui/material';
-import type { AicProductKey, Receipt } from '@receipts';
+import type { Receipt } from '@receipts';
 import type { IntermediateProduct, ProductionNode } from './calculator_utils';
 import { RecipeSelectionCard } from './recipe_selection_card';
 import { topologicalSort } from './topsort_utils';
 
 interface ProductionChainSectionProps {
-  intermediateProducts: Map<AicProductKey, IntermediateProduct>;
+  intermediateProducts: Map<string, IntermediateProduct>;
   productionTrees: ProductionNode[];
-  onRecipeChange: (item: AicProductKey, recipe: Receipt) => void;
+  onRecipeChange: (item: string, recipe: Receipt) => void;
 }
 
 export function ProductionChainSection({

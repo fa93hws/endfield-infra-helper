@@ -1,13 +1,12 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Box, IconButton, Stack } from '@mui/material';
-import type { AicProductKey } from '@receipts';
 import { ItemSelector } from './item_selector';
 import { QuantityInput } from './quantity_input';
 
 interface DesiredOutputRowProps {
-  item: AicProductKey | null;
+  item: string | null;
   quantity: number;
-  onItemChange: (item: AicProductKey | null) => void;
+  onItemChange: (item: string | null) => void;
   onQuantityChange: (quantity: number) => void;
   onRemove: () => void;
 }

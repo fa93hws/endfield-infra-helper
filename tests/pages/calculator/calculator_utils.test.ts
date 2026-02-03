@@ -3,7 +3,6 @@ import {
   aggregateNaturalResources,
   buildProductionTree,
   buildRecipeMap,
-  isNaturalResource,
 } from '../../../src/pages/calculator/calculator_utils';
 
 describe('Calculator Utilities', () => {
@@ -27,20 +26,6 @@ describe('Calculator Utilities', () => {
       const origocrustRecipes = recipeMap.get('origocrust');
       expect(origocrustRecipes).toBeDefined();
       expect(origocrustRecipes!.length).toBeGreaterThan(1);
-    });
-  });
-
-  describe('isNaturalResource', () => {
-    it('should return true for natural resources', () => {
-      expect(isNaturalResource('sandleaf')).toBe(true);
-      expect(isNaturalResource('buckflower')).toBe(true);
-      expect(isNaturalResource('originiumOre')).toBe(true);
-    });
-
-    it('should return false for produced items', () => {
-      expect(isNaturalResource('carbon')).toBe(false);
-      expect(isNaturalResource('amethystBottle')).toBe(false);
-      expect(isNaturalResource('batteryValleyLc')).toBe(false);
     });
   });
 

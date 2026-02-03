@@ -1,16 +1,16 @@
 import { Autocomplete, Avatar, Box, TextField, Typography } from '@mui/material';
-import { allProduces, images, type AicProductKey } from '@receipts';
+import { allProduces, images } from '@receipts';
 
 interface ItemSelectorProps {
-  value: AicProductKey | null;
-  onChange: (value: AicProductKey | null) => void;
+  value: string | null;
+  onChange: (value: string | null) => void;
   label?: string;
   placeholder?: string;
 }
 
 export function ItemSelector({ value, onChange, label, placeholder }: ItemSelectorProps) {
   const items = Object.entries(allProduces).map(([key, name]) => ({
-    key: key as AicProductKey,
+    key: key as string,
     name,
   }));
 

@@ -1,13 +1,7 @@
-import {
-  allReceipts,
-  naturalItems,
-  type AicProductKey,
-  type NaturalItemKey,
-  type Receipt,
-} from '@receipts';
+import { allReceipts, naturalItems, type Receipt } from '@receipts';
 
 export interface ProductionNode {
-  item: AicProductKey | NaturalItemKey;
+  item: string;
   quantity: number; // Units per minute
   recipe: Receipt | null; // null for natural resources
   children: ProductionNode[];
@@ -17,12 +11,12 @@ export interface ProductionNode {
 /**
  * Build a map of all recipes indexed by their output items
  */
-export function buildRecipeMap(): Map<AicProductKey, Receipt[]> {
-  const map = new Map<AicProductKey, Receipt[]>();
+export function buildRecipeMap(): Map<string, Receipt[]> {
+  const map = new Map<string, Receipt[]>();
 
   allReceipts.forEach((receipt) => {
     receipt.outputs.forEach((output) => {
-      const item = output.item as AicProductKey;
+      const item = output.item;
       if (!map.has(item)) {
         map.set(item, []);
       }
@@ -34,19 +28,9 @@ export function buildRecipeMap(): Map<AicProductKey, Receipt[]> {
 }
 
 /**
- * Check if an item is a natural resource (cannot be produced)
- */
-export function isNaturalResource(item: string): item is NaturalItemKey {
-  return item in naturalItems;
-}
-
-/**
  * Get the default recipe for an item (first available recipe)
  */
-export function getDefaultRecipe(
-  item: AicProductKey,
-  recipeMap: Map<AicProductKey, Receipt[]>,
-): Receipt | null {
+export function getDefaultRecipe(item: string, recipeMap: Map<string, Receipt[]>): Receipt | null {
   const recipes = recipeMap.get(item);
   return recipes && recipes.length > 0 ? recipes[0] : null;
 }
@@ -56,14 +40,14 @@ export function getDefaultRecipe(
  * Returns the tree structure showing all dependencies down to natural resources
  */
 export function buildProductionTree(
-  targetItem: AicProductKey | NaturalItemKey,
+  targetItem: string,
   targetQuantity: number,
-  recipeChoices: Map<AicProductKey, Receipt>,
-  recipeMap: Map<AicProductKey, Receipt[]>,
+  recipeChoices: Map<string, Receipt>,
+  recipeMap: Map<string, Receipt[]>,
   visited: Set<string> = new Set(),
 ): ProductionNode {
   // Base case: natural resource
-  if (isNaturalResource(targetItem)) {
+  if (naturalItems[targetItem] != null) {
     return {
       item: targetItem,
       quantity: targetQuantity,
@@ -85,8 +69,7 @@ export function buildProductionTree(
 
   // Get the chosen recipe or default
   const recipe =
-    recipeChoices.get(targetItem as AicProductKey) ??
-    getDefaultRecipe(targetItem as AicProductKey, recipeMap);
+    recipeChoices.get(targetItem as string) ?? getDefaultRecipe(targetItem as string, recipeMap);
 
   // No recipe available
   if (!recipe) {
@@ -134,14 +117,12 @@ export function buildProductionTree(
  * Aggregate natural resources from multiple production trees
  * Returns a map of natural resource -> total quantity needed
  */
-export function aggregateNaturalResources(
-  productionTrees: ProductionNode[],
-): Map<NaturalItemKey, number> {
-  const resources = new Map<NaturalItemKey, number>();
+export function aggregateNaturalResources(productionTrees: ProductionNode[]): Map<string, number> {
+  const resources = new Map<string, number>();
 
   function traverse(node: ProductionNode) {
     // If this is a natural resource, add to totals
-    if (node.recipe === null && !node.isCircular && isNaturalResource(node.item)) {
+    if (node.recipe === null && !node.isCircular && naturalItems[node.item] != null) {
       const current = resources.get(node.item) ?? 0;
       resources.set(node.item, current + node.quantity);
       return;
@@ -169,17 +150,17 @@ export interface IntermediateProduct {
  */
 export function aggregateIntermediateProducts(
   productionTrees: ProductionNode[],
-  recipeChoices: Map<AicProductKey, Receipt>,
-  recipeMap: Map<AicProductKey, Receipt[]>,
-): Map<AicProductKey, IntermediateProduct> {
-  const products = new Map<AicProductKey, IntermediateProduct>();
+  recipeChoices: Map<string, Receipt>,
+  recipeMap: Map<string, Receipt[]>,
+): Map<string, IntermediateProduct> {
+  const products = new Map<string, IntermediateProduct>();
 
   function traverse(node: ProductionNode) {
-    if (node.recipe === null || node.isCircular || isNaturalResource(node.item)) {
+    if (node.recipe === null || node.isCircular || naturalItems[node.item] != null) {
       return;
     }
 
-    const item = node.item as AicProductKey;
+    const item = node.item as string;
     const existing = products.get(item);
 
     if (existing) {

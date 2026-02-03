@@ -1,4 +1,3 @@
-import type { AicProductKey } from '@receipts';
 import type { IntermediateProduct, ProductionNode } from './calculator_utils';
 
 /**
@@ -6,17 +5,14 @@ import type { IntermediateProduct, ProductionNode } from './calculator_utils';
  * Items closer to natural resources have lower depth
  * Items that depend on other items have higher depth
  */
-function calculateDepths(
-  productionTrees: ProductionNode[],
-  itemDepths: Map<AicProductKey, number>,
-) {
+function calculateDepths(productionTrees: ProductionNode[], itemDepths: Map<string, number>) {
   function traverse(node: ProductionNode, currentDepth: number) {
     // Skip natural resources and circular dependencies
     if (node.recipe === null || node.isCircular) {
       return;
     }
 
-    const item = node.item as AicProductKey;
+    const item = node.item;
     const existingDepth = itemDepths.get(item);
 
     // Update depth if this path is deeper (item depends on more things)
@@ -38,10 +34,10 @@ function calculateDepths(
  * Items with higher depth (depend on other items) come later
  */
 export function topologicalSort(
-  items: [AicProductKey, IntermediateProduct][],
+  items: [string, IntermediateProduct][],
   productionTrees: ProductionNode[],
-): [AicProductKey, IntermediateProduct][] {
-  const itemDepths = new Map<AicProductKey, number>();
+): [string, IntermediateProduct][] {
+  const itemDepths = new Map<string, number>();
 
   // Calculate depths for all items
   calculateDepths(productionTrees, itemDepths);

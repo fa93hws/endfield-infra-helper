@@ -1,5 +1,4 @@
 import { Stack, Typography } from '@mui/material';
-import type { AicProductKey } from '@receipts';
 import { AppLayout } from '@ui/layout/app_layout';
 import { useCalculator } from './calculator_state';
 import { DesiredOutputsSection } from './desired_outputs_section';
@@ -22,7 +21,7 @@ export function Page() {
   const handleAddOutput = () => {
     // Add with null item and default quantity, user will select
     // We need to provide a default item to satisfy TypeScript
-    const defaultItem = 'carbon' as AicProductKey;
+    const defaultItem = 'carbon';
     addDesiredOutput(defaultItem, 30);
   };
 

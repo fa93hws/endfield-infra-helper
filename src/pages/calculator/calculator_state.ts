@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
-import type { AicProductKey, NaturalItemKey, Receipt } from '@receipts';
+import type { Receipt } from '@receipts';
 import {
   aggregateIntermediateProducts,
   aggregateNaturalResources,
@@ -11,21 +11,21 @@ import {
 
 export interface DesiredOutput {
   id: string; // Unique ID for React keys
-  item: AicProductKey;
+  item: string;
   quantity: number; // Target quantity per minute
 }
 
 export interface CalculatorState {
   desiredOutputs: DesiredOutput[];
-  recipeChoices: Map<AicProductKey, Receipt>;
+  recipeChoices: Map<string, Receipt>;
   productionTrees: ProductionNode[];
-  naturalResources: Map<NaturalItemKey, number>;
-  intermediateProducts: Map<AicProductKey, IntermediateProduct>;
+  naturalResources: Map<string, number>;
+  intermediateProducts: Map<string, IntermediateProduct>;
 }
 
 export function useCalculator() {
   const [desiredOutputs, setDesiredOutputs] = useState<DesiredOutput[]>([]);
-  const [recipeChoices, setRecipeChoices] = useState<Map<AicProductKey, Receipt>>(new Map());
+  const [recipeChoices, setRecipeChoices] = useState<Map<string, Receipt>>(new Map());
 
   // Memoize the recipe map since it doesn't change
   const recipeMap = useMemo(() => buildRecipeMap(), []);
@@ -48,7 +48,7 @@ export function useCalculator() {
   }, [productionTrees, recipeChoices, recipeMap]);
 
   // Add a new desired output
-  const addDesiredOutput = useCallback((item: AicProductKey, quantity: number) => {
+  const addDesiredOutput = useCallback((item: string, quantity: number) => {
     const newOutput: DesiredOutput = {
       id: `${Date.now()}-${Math.random()}`,
       item,
@@ -70,14 +70,14 @@ export function useCalculator() {
   }, []);
 
   // Update the item of a desired output
-  const updateItem = useCallback((id: string, item: AicProductKey) => {
+  const updateItem = useCallback((id: string, item: string) => {
     setDesiredOutputs((prev) =>
       prev.map((output) => (output.id === id ? { ...output, item } : output)),
     );
   }, []);
 
   // Select a specific recipe for an item
-  const selectRecipe = useCallback((item: AicProductKey, recipe: Receipt) => {
+  const selectRecipe = useCallback((item: string, recipe: Receipt) => {
     setRecipeChoices((prev) => {
       const newChoices = new Map(prev);
       newChoices.set(item, recipe);
@@ -87,7 +87,7 @@ export function useCalculator() {
 
   // Get available recipes for an item
   const getAvailableRecipes = useCallback(
-    (item: AicProductKey): Receipt[] => {
+    (item: string): Receipt[] => {
       return recipeMap.get(item) ?? [];
     },
     [recipeMap],

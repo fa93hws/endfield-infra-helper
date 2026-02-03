@@ -1,16 +1,16 @@
 import { Paper, Stack, Typography } from '@mui/material';
-import { ores, plants, type NaturalItemKey } from '@receipts';
+import { ores, plants } from '@receipts';
 import { NaturalResourceItem } from './natural_resource_item';
 
 interface NaturalResourcesSectionProps {
-  naturalResources: Map<NaturalItemKey, number>;
+  naturalResources: Map<string, number>;
 }
 
 // Get keys from categorized objects
-const oreKeys = Object.keys(ores) as NaturalItemKey[];
-const plantKeys = Object.keys(plants) as NaturalItemKey[];
+const oreKeys = Object.keys(ores) as string[];
+const plantKeys = Object.keys(plants) as string[];
 
-function sortNaturalResources(a: [NaturalItemKey, number], b: [NaturalItemKey, number]): number {
+function sortNaturalResources(a: [string, number], b: [string, number]): number {
   const [itemA] = a;
   const [itemB] = b;
 

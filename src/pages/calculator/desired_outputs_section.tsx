@@ -1,13 +1,12 @@
 import AddIcon from '@mui/icons-material/Add';
 import { Button, Paper, Stack, Typography } from '@mui/material';
-import type { AicProductKey } from '@receipts';
 import type { DesiredOutput } from './calculator_state';
 import { DesiredOutputRow } from './desired_output_row';
 
 interface DesiredOutputsSectionProps {
   desiredOutputs: DesiredOutput[];
   onAdd: () => void;
-  onItemChange: (id: string, item: AicProductKey) => void;
+  onItemChange: (id: string, item: string) => void;
   onQuantityChange: (id: string, quantity: number) => void;
   onRemove: (id: string) => void;
 }

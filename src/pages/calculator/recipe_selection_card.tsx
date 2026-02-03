@@ -11,11 +11,11 @@ import {
   Stack,
   Typography,
 } from '@mui/material';
-import { allProduces, type AicProductKey, type Receipt } from '@receipts';
+import { allProduces, type Receipt } from '@receipts';
 import { RecipeItem } from '@ui/recipe/recipe_item';
 
 interface RecipeSelectionCardProps {
-  item: AicProductKey;
+  item: string;
   quantity: number;
   alternativeRecipes: Receipt[];
   chosenRecipe: Receipt;
