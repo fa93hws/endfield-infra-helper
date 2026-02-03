@@ -6,16 +6,20 @@ interface HighlightTextProps {
   variant?: 'body1' | 'body2' | 'caption';
 }
 
+function NoMatchText({ text }: { text: string }) {
+  return (
+    <Typography variant="body2" noWrap>
+      {text}
+    </Typography>
+  );
+}
+
 /**
  * Component that highlights matching text based on search query
  */
 export function HighlightText({ text, query, variant = 'body2' }: HighlightTextProps) {
   if (!query.trim()) {
-    return (
-      <Typography variant={variant} noWrap>
-        {text}
-      </Typography>
-    );
+    return <NoMatchText text={text} />;
   }
 
   const lowerText = text.toLowerCase();
@@ -23,11 +27,7 @@ export function HighlightText({ text, query, variant = 'body2' }: HighlightTextP
   const index = lowerText.indexOf(lowerQuery);
 
   if (index === -1) {
-    return (
-      <Typography variant={variant} noWrap>
-        {text}
-      </Typography>
-    );
+    return <NoMatchText text={text} />;
   }
 
   const before = text.substring(0, index);

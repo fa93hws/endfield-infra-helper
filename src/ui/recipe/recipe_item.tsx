@@ -1,6 +1,7 @@
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Avatar, Box, Stack, Typography } from '@mui/material';
-import { allProduces, images, naturalItems, type Receipt } from '@receipts';
+import { items, type Item } from '@receipts/generated/items';
+import type { Receipt } from '@receipts/generated/receipts';
 import { HighlightText } from './highlight_text';
 
 interface RecipeItemProps {
@@ -8,61 +9,64 @@ interface RecipeItemProps {
   searchQuery?: string;
 }
 
-const allItems = { ...naturalItems, ...allProduces };
+function ItemDisplay({
+  item,
+  searchQuery,
+  perMin,
+  appendPlus,
+}: {
+  item: Item;
+  searchQuery: string;
+  perMin: number;
+  appendPlus: boolean;
+}) {
+  return (
+    <Stack direction="row" spacing={1} alignItems="center">
+      <Avatar
+        src={item.imagePath}
+        alt={item.label}
+        variant="square"
+        sx={{ width: 32, height: 32 }}
+      />
+      <Box>
+        <HighlightText text={item.label} query={searchQuery} variant="body2" />
+        <Typography variant="caption" color="text.secondary">
+          {perMin}/min
+        </Typography>
+      </Box>
+      {appendPlus && (
+        <Typography variant="body2" color="text.secondary">
+          +
+        </Typography>
+      )}
+    </Stack>
+  );
+}
 
 export function RecipeItem({ recipe, searchQuery = '' }: RecipeItemProps) {
   return (
     <Stack direction="row" spacing={2} alignItems="center" flexWrap="wrap">
-      {/* Inputs */}
       <Stack direction="row" spacing={1} alignItems="center">
         {recipe.inputs.map((input, i) => (
-          <Stack key={i} direction="row" spacing={1} alignItems="center">
-            <Avatar
-              src={images[input.item]}
-              alt={allItems[input.item]}
-              variant="square"
-              sx={{ width: 32, height: 32 }}
-            />
-            <Box>
-              <HighlightText text={allItems[input.item]} query={searchQuery} variant="body2" />
-              <Typography variant="caption" color="text.secondary">
-                {input.perMin}/min
-              </Typography>
-            </Box>
-            {i < recipe.inputs.length - 1 && (
-              <Typography variant="body2" color="text.secondary">
-                +
-              </Typography>
-            )}
-          </Stack>
+          <ItemDisplay
+            key={i}
+            item={items[input.item]}
+            searchQuery={searchQuery}
+            perMin={input.perMin}
+            appendPlus={i < recipe.inputs.length - 1}
+          />
         ))}
       </Stack>
-
-      {/* Arrow */}
       <ArrowForwardIcon color="action" />
-
-      {/* Outputs */}
       <Stack direction="row" spacing={1} alignItems="center">
         {recipe.outputs.map((output, i) => (
-          <Stack key={i} direction="row" spacing={1} alignItems="center">
-            <Avatar
-              src={images[output.item]}
-              alt={allItems[output.item]}
-              variant="square"
-              sx={{ width: 32, height: 32 }}
-            />
-            <Box>
-              <HighlightText text={allItems[output.item]} query={searchQuery} variant="body2" />
-              <Typography variant="caption" color="text.secondary">
-                {output.perMin}/min
-              </Typography>
-            </Box>
-            {i < recipe.outputs.length - 1 && (
-              <Typography variant="body2" color="text.secondary">
-                +
-              </Typography>
-            )}
-          </Stack>
+          <ItemDisplay
+            key={i}
+            item={items[output.item]}
+            searchQuery={searchQuery}
+            perMin={output.perMin}
+            appendPlus={i < recipe.outputs.length - 1}
+          />
         ))}
       </Stack>
     </Stack>
