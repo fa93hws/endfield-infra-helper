@@ -1,18 +1,18 @@
-import { useMemo, useState } from 'react';
+import * as React from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { InputAdornment, Stack, TextField, Typography } from '@mui/material';
-import { allProduces, naturalItems, receiptSections } from '@receipts';
+import { items } from '@receipts/generated/items';
+import { receipts } from '@receipts/generated/receipts';
+import { groupReceiptsByCategory } from '@receipts/helper';
 import { AppLayout } from '@ui/layout/app_layout';
 import { ReceiptSection } from './receipt_section';
 
 export function Page() {
-  const [searchQuery, setSearchQuery] = useState('');
-
-  // Combine all items for name lookup
-  const allItems = useMemo(() => ({ ...allProduces, ...naturalItems }), []);
+  const [searchQuery, setSearchQuery] = React.useState('');
+  const receiptSections = React.useMemo(() => groupReceiptsByCategory(receipts, items), []);
 
   // Filter recipes based on search query
-  const filteredSections = useMemo(() => {
+  const filteredSections = React.useMemo(() => {
     if (!searchQuery.trim()) {
       return receiptSections;
     }
@@ -25,20 +25,25 @@ export function Page() {
         recipes: section.recipes.filter((recipe) => {
           // Check if any input or output matches the search query
           const matchesInput = recipe.inputs.some((input) => {
-            const itemName = allItems[input.item as keyof typeof allItems];
-            return itemName?.toLowerCase().includes(query);
+            const itemName = items[input.item];
+            return itemName?.label.toLowerCase().includes(query);
           });
 
           const matchesOutput = recipe.outputs.some((output) => {
-            const itemName = allItems[output.item as keyof typeof allItems];
-            return itemName?.toLowerCase().includes(query);
+            const itemName = items[output.item];
+            return itemName?.label.toLowerCase().includes(query);
           });
 
           return matchesInput || matchesOutput;
         }),
       }))
       .filter((section) => section.recipes.length > 0); // Only show sections with matching recipes
-  }, [searchQuery, allItems]);
+  }, [searchQuery, receiptSections]);
+
+  const onChange = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value),
+    [],
+  );
 
   return (
     <AppLayout current="receipts">
@@ -50,7 +55,7 @@ export function Page() {
         fullWidth
         placeholder="搜索配方... (输入物品名称)"
         value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={onChange}
         slotProps={{
           input: {
             startAdornment: (

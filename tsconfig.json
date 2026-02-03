@@ -21,7 +21,8 @@
     "baseUrl": ".",
     "paths": {
       "@ui/*": ["src/ui/*"],
-      "@receipts": ["src/receipts"]
+      "@receipts": ["src/receipts"],
+      "@receipts/*": ["src/receipts/*"],
     }
   },
   "include": ["src"],

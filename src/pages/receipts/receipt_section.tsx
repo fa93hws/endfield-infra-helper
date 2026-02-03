@@ -1,28 +1,21 @@
+import * as React from 'react';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Accordion, AccordionDetails, AccordionSummary, Stack, Typography } from '@mui/material';
-import { sortReceiptsByOutput, type Receipt } from '@receipts';
+import { items } from '@receipts/generated/items';
+import type { Receipt } from '@receipts/generated/receipts';
+import { groupReceiptsByFirstOutput, sortReceiptsByOutput } from '@receipts/helper';
 import { RecipeGroup } from './recipe_group';
 
-interface ReceiptSectionProps {
+type ReceiptSectionProps = {
   title: string;
   recipes: Receipt[];
-  searchQuery?: string;
-}
+  searchQuery: string;
+};
 
-export function ReceiptSection({ title, recipes, searchQuery = '' }: ReceiptSectionProps) {
-  const sortedReceipts = sortReceiptsByOutput(recipes);
-
-  // Group receipts by output item
-  const groupedReceipts = sortedReceipts.reduce(
-    (acc, receipt) => {
-      const outputKey = receipt.outputs[0].item;
-      if (!acc[outputKey]) {
-        acc[outputKey] = [];
-      }
-      acc[outputKey].push(receipt);
-      return acc;
-    },
-    {} as Record<string, Receipt[]>,
+export function ReceiptSection({ title, recipes, searchQuery }: ReceiptSectionProps) {
+  const groupedReceipts = React.useMemo(
+    () => groupReceiptsByFirstOutput(sortReceiptsByOutput(recipes, items)),
+    [recipes],
   );
 
   return (
