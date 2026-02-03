@@ -19,10 +19,9 @@ export function Page() {
   } = useCalculator();
 
   const handleAddOutput = () => {
-    // Add with null item and default quantity, user will select
-    // We need to provide a default item to satisfy TypeScript
+    // Add with default item, quantity will be auto-detected from recipe
     const defaultItem = 'carbon';
-    addDesiredOutput(defaultItem, 30);
+    addDesiredOutput(defaultItem);
   };
 
   return (

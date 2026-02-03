@@ -90,14 +90,30 @@ export function useCalculator() {
   }, [productionTrees, recipeChoices, recipeMap]);
 
   // Add a new desired output
-  const addDesiredOutput = useCallback((item: string, quantity: number) => {
-    const newOutput: DesiredOutput = {
-      id: `${Date.now()}-${Math.random()}`,
-      item,
-      quantity,
-    };
-    setDesiredOutputs((prev) => [...prev, newOutput]);
-  }, []);
+  const addDesiredOutput = useCallback(
+    (item: string, quantity?: number) => {
+      let finalQuantity = quantity;
+
+      // If quantity not provided, get it from the recipe
+      if (finalQuantity == null) {
+        const recipes = recipeMap.get(item);
+        if (recipes && recipes.length > 0) {
+          const outputItem = recipes[0].outputs.find((o) => o.item === item);
+          finalQuantity = outputItem?.perMin ?? 30; // Fallback to 30 if not found
+        } else {
+          finalQuantity = 30; // Default fallback
+        }
+      }
+
+      const newOutput: DesiredOutput = {
+        id: `${Date.now()}-${Math.random()}`,
+        item,
+        quantity: finalQuantity,
+      };
+      setDesiredOutputs((prev) => [...prev, newOutput]);
+    },
+    [recipeMap],
+  );
 
   // Remove a desired output by ID
   const removeDesiredOutput = useCallback((id: string) => {
@@ -112,11 +128,30 @@ export function useCalculator() {
   }, []);
 
   // Update the item of a desired output
-  const updateItem = useCallback((id: string, item: string) => {
-    setDesiredOutputs((prev) =>
-      prev.map((output) => (output.id === id ? { ...output, item } : output)),
-    );
-  }, []);
+  const updateItem = useCallback(
+    (id: string, item: string) => {
+      setDesiredOutputs((prev) =>
+        prev.map((output) => {
+          if (output.id !== id) return output;
+
+          // Get the default recipe for this item
+          const recipes = recipeMap.get(item);
+          let newQuantity = output.quantity; // Keep existing quantity as fallback
+
+          if (recipes && recipes.length > 0) {
+            // Find the output quantity for this item in the first recipe
+            const outputItem = recipes[0].outputs.find((o) => o.item === item);
+            if (outputItem) {
+              newQuantity = outputItem.perMin;
+            }
+          }
+
+          return { ...output, item, quantity: newQuantity };
+        }),
+      );
+    },
+    [recipeMap],
+  );
 
   // Select a specific recipe for an item
   const selectRecipe = useCallback((item: string, recipe: Receipt) => {
