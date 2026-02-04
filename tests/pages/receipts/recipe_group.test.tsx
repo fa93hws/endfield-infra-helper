@@ -57,7 +57,7 @@ describe('RecipeGroup', () => {
 
     // Initially collapsed - remaining recipes not visible
     const sandleafElement = screen.getByText('砂叶');
-    const originiumElement = screen.getByText('源石原矿');
+    const originiumElement = screen.getByText('源矿');
     expect(sandleafElement).not.toBeVisible();
     expect(originiumElement).not.toBeVisible();
 

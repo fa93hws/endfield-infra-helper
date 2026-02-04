@@ -127,7 +127,7 @@ export const items: Record<string, Item> = {
     imagePath: '/images/items/yazhen_spray_b.webp',
   },
   amethystOre: {
-    label: '紫水晶矿',
+    label: '紫晶矿',
     category: ItemCategory.naturalOre,
     imagePath: '/images/items/amethyst_ore.webp',
   },
@@ -137,7 +137,7 @@ export const items: Record<string, Item> = {
     imagePath: '/images/items/ferrium_ore.webp',
   },
   originiumOre: {
-    label: '源石原矿',
+    label: '源矿',
     category: ItemCategory.naturalOre,
     imagePath: '/images/items/originium_ore.webp',
   },

@@ -76,7 +76,7 @@ describe('RecipeItem', () => {
 
     render(<RecipeItem recipe={recipe} />);
 
-    expect(screen.getByText('源石原矿')).toBeInTheDocument();
+    expect(screen.getByText('源矿')).toBeInTheDocument();
     expect(screen.getByText('碳')).toBeInTheDocument();
   });
 
